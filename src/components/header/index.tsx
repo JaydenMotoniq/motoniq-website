@@ -11,7 +11,7 @@ export const Header = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button>CONTACT US</Button>
+        <Button className="text-sm">CONTACT US</Button>
       </Link>
 
       <Image

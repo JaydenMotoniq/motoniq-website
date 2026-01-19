@@ -29,16 +29,18 @@
 
 @theme {
   --color-primary: #d5f959;
-  --color-mono-800: #000;
-  --color-mono-700: #171315;
-  --color-mono-400: #ceced4;
   --color-mono-0: #fff;
+  --color-mono-400: #ceced4;
+  --color-mono-600: #393739;
+  --color-mono-700: #171315;
+  --color-mono-800: #000;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: var(--color-mono-0);
 }
 
 body {
