@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { type Metadata } from "next";
 
-import { ProtoMono, SFProDisplay } from "./fonts";
+import { NeueHaasGroteskDisplay, PPFraktionMono } from "./fonts";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ProtoMono.variable} ${SFProDisplay.variable}`}>
+      <body
+        className={`${NeueHaasGroteskDisplay.variable} ${PPFraktionMono.variable}`}
+      >
         <Header />
         {children}
         <Footer />

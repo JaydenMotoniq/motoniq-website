@@ -9,7 +9,7 @@ export const Footer = () => {
       {/* Marquee Tape */}
       <Marquee
         repeat={8}
-        className="bg-primary text-mono-800 py-1.5 font-(family-name:--font-proto-mono) text-sm tracking-tight uppercase [--duration:20s] [--gap:2rem]"
+        className="bg-primary text-mono-800 font-pp-fraktion-mono py-1.5 text-sm tracking-tight uppercase [--duration:20s] [--gap:2rem]"
       >
         <span>•</span>
         <span>The Full-Stack Data Collection System</span>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-DepartureMono: 'DepartureMono';
-  --font-AlteHaasGrotesk: 'AlteHaasGrotesk';
+  --font-neue-haas-grotesk-display: var(--font-neue-haas-grotesk-display);
+  --font-pp-fraktion-mono: var(--font-pp-fraktion-mono);
 
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
@@ -42,7 +42,8 @@ body {
 }
 
 body {
-  font-family: "SFProDisplay";
+  font-family: var(--font-neue-haas-grotesk-display);
+  font-weight: 500;
   color: var(--color-mono-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
