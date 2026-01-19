@@ -1,0 +1,82 @@
+stages:
+  - build_and_deploy
+  - build
+  - deploy
+
+variables:
+  IMAGE_NAME: gcr.io/poetic-nova-407814/motoniq-landing
+  IMAGE_TAG: $IMAGE_NAME:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA
+
+.build_template: &build_template
+  stage: build
+  image: gcr.io/google.com/cloudsdktool/google-cloud-cli:529.0.0
+  before_script:
+    - echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+    - gcloud auth configure-docker
+  tags:
+    - docker
+
+.deploy_template: &deploy_template
+  stage: deploy
+  image: ubuntu:22.04
+  before_script:
+    - apt-get update -y && apt-get install -y openssh-client git
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -H gitlab.ent-dx.com >> ~/.ssh/known_hosts
+    - git config --global user.email "a.litvinski@entangle.fi"
+    - git config --global user.name "argocd"
+  tags:
+    - docker
+ 
+.build_and_deploy_template: &build_and_deploy_template
+  stage: build_and_deploy
+  image: gcr.io/google.com/cloudsdktool/google-cloud-cli:529.0.0
+  before_script:
+    - echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+    - gcloud auth configure-docker
+    - apt-get update -y && apt-get install -y openssh-client git
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -H gitlab.ent-dx.com >> ~/.ssh/known_hosts
+    - git config --global user.email "a.litvinski@entangle.fi"
+    - git config --global user.name "argocd"    
+  tags:
+    - docker
+
+dev_build:
+  <<: *build_template
+  script:
+    - docker build -t $IMAGE_TAG.dev -f Dockerfile .
+    - docker push $IMAGE_TAG.dev
+  when: manual
+  interruptible: true
+
+deploy_dev:
+  <<: *deploy_template
+  script:
+    - git clone git@gitlab.ent-dx.com:devops/kubernetes-dev.git
+    - cd kubernetes-dev/helm/landings/motoniq-landing
+    - sed -i -E "/image:/ s|(image:).*|\1 $IMAGE_TAG.dev|; " values.yaml
+    - git add values.yaml
+    - git commit -m "Update Image $IMAGE_TAG.dev"
+    - git push
+  when: manual
+  needs:
+    - dev_build
+
+dev_build_and_deploy:
+  <<: *build_and_deploy_template
+  script:
+    - docker build -t $IMAGE_TAG.dev -f Dockerfile .
+    - docker push $IMAGE_TAG.dev
+    - git clone git@gitlab.ent-dx.com:devops/kubernetes-dev.git
+    - cd kubernetes-dev/helm/landings/motoniq-landing
+    - sed -i -E "/image:/ s|(image:).*|\1 $IMAGE_TAG.dev|; " values.yaml
+    - git add values.yaml
+    - git commit -m "Update Image $IMAGE_TAG.dev"
+    - git push
+  when: manual
+  interruptible: true

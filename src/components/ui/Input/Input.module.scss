@@ -1,0 +1,64 @@
+.input {
+  width: 100%;
+  border-radius: 8px;
+
+  &_error {
+    background-color: #dc283d;
+
+    & > input {
+      border: 1px solid #dc283d;
+      outline: none !important;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 8px;
+
+    font-family: "SFProDisplay";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    color: #000;
+    line-height: 16px;
+
+    &:focus {
+      outline: 3px solid rgba(213, 249, 89, 0.5);
+      color: #000;
+    }
+
+    &::placeholder {
+      font-family: "SFProDisplay";
+      color: #96969b;
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      &::placeholder {
+        color: #000;
+      }
+    }
+  }
+
+  &__error {
+    font-family: "SFProDisplay";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    color: #fff;
+    line-height: 16px;
+
+    padding: 4px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+  }
+
+  .input__error {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+  }
+}
