@@ -1,9 +1,8 @@
-import "./globals.scss";
-import type { Metadata } from "next";
-import { ProtoMono, SFProDisplay } from "./fonts";
+import "./globals.css";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { type Metadata } from "next";
+
+import { ProtoMono, SFProDisplay } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Motoniq",
@@ -17,10 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ProtoMono.className} ${SFProDisplay.className}`}>
-        <Header />
+      <body className={`${ProtoMono.variable} ${SFProDisplay.variable}`}>
         {children}
-        <Footer />
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ variables:
     - git config --global user.name "argocd"
   tags:
     - docker
- 
+
 .build_and_deploy_template: &build_and_deploy_template
   stage: build_and_deploy
   image: gcr.io/google.com/cloudsdktool/google-cloud-cli:529.0.0
@@ -42,7 +42,7 @@ variables:
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan -H gitlab.ent-dx.com >> ~/.ssh/known_hosts
     - git config --global user.email "a.litvinski@entangle.fi"
-    - git config --global user.name "argocd"    
+    - git config --global user.name "argocd"
   tags:
     - docker
 

@@ -13,6 +13,8 @@ export const ProtoMono = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-proto-mono",
+  display: "swap",
 });
 
 export const SFProDisplay = localFont({
@@ -38,4 +40,6 @@ export const SFProDisplay = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-sf-pro-display",
+  display: "swap",
 });

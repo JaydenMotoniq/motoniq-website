@@ -1,3 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #d5f959;
+  --color-mono-800: #000;
+  --color-mono-700: #171315;
+  --color-mono-400: #ceced4;
+  --color-mono-0: #fff;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -7,15 +17,12 @@ body {
 
 body {
   font-family: "SFProDisplay";
-  color: #000;
+  color: var(--color-mono-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: repeating-linear-gradient(
-      to bottom,
-      #fbfbfb 0 8px,
-      transparent 8px 16px
-    ),
+  background-image:
+    repeating-linear-gradient(to bottom, #fbfbfb 0 8px, transparent 8px 16px),
     repeating-linear-gradient(to right, #c7c7ce 0 1px, transparent 1px 150px);
   background-size: 150px 16px;
   background-color: #fbfbfb;
