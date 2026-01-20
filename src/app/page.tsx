@@ -3,7 +3,7 @@ import { Button } from "@/components/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-10 md:px-16 md:py-64 xl:px-50 xl:py-50 2xl:px-64 2xl:py-100">
+    <div className="flex flex-col items-center justify-center px-6 py-10 md:px-16 md:py-64 xl:px-50 xl:py-50 2xl:px-64 2xl:pt-64 2xl:pb-100">
       <div className="flex w-full flex-col items-center justify-center gap-9">
         <div className="flex w-full flex-col items-center justify-center gap-4">
           <div className="flex w-full flex-wrap items-center justify-center gap-4">

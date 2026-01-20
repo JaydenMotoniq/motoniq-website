@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { NeueHaasGroteskDisplay, PPFraktionMono } from "./fonts";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { DotPattern } from "@/components/dot-pattern";
 
 export const metadata: Metadata = {
   title: "Motoniq",
@@ -21,7 +22,8 @@ export default function RootLayout({
       <body
         className={`${NeueHaasGroteskDisplay.variable} ${PPFraktionMono.variable}`}
       >
-        <main className="flex min-h-dvh flex-col">
+        <DotPattern />
+        <main className="relative z-10 flex min-h-dvh flex-col">
           <Header />
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
