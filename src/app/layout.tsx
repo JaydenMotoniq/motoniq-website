@@ -8,8 +8,8 @@ import { Footer } from "@/components/footer";
 import { DotPattern } from "@/components/dot-pattern";
 
 export const metadata: Metadata = {
-  title: "Motoniq",
-  description: "Motion intelligent machines",
+  title: "Motoniq: The first company in the world",
+  description: "The Data Engine for Physical AI",
 };
 
 export default function RootLayout({
