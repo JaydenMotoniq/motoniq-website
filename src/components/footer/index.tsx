@@ -9,23 +9,24 @@ export const Footer = () => {
       {/* Marquee Tape */}
       <Marquee
         repeat={8}
-        className="bg-primary text-mono-800 font-pp-fraktion-mono py-1.5 text-sm tracking-tight uppercase [--duration:20s] [--gap:2rem]"
+        className="bg-primary text-mono-800 font-pp-fraktion-mono hidden py-1.5 text-sm tracking-tight uppercase [--duration:20s] [--gap:2rem] md:flex"
       >
         <span>•</span>
         <span>The Full-Stack Data Collection System</span>
       </Marquee>
 
-      <footer className="bg-mono-800 px-64 py-16">
+      <footer className="md:bg-mono-800 md:p-16 xl:px-50 xl:py-16 2xl:px-64 2xl:py-16">
         {/* Menu Card */}
-        <div className="bg-primary flex items-end justify-between rounded-2xl p-8">
+        <div className="bg-primary flex flex-col justify-between gap-16 rounded-t-2xl px-6 py-10 md:flex-row md:items-end md:gap-4 md:rounded-2xl md:p-8">
           {/* Left side - Logo and metadata */}
-          <div className="flex flex-1 flex-col gap-10">
+          <div className="flex flex-1 flex-col gap-6 md:gap-10">
             <div className="flex flex-col gap-6">
               <Image
                 src="/icons/logo.svg"
                 alt="Motoniq"
                 width={166}
                 height={24}
+                className="shrink-0"
               />
               <p className="text-mono-700 text-base leading-5">
                 The Data Engine for Physical Ai
@@ -37,7 +38,7 @@ export const Footer = () => {
           </div>
 
           {/* Right side - Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center">
             {/* Email */}
             <Link
               href="mailto:contact@motoniq.ai"

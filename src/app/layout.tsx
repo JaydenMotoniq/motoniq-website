@@ -21,9 +21,11 @@ export default function RootLayout({
       <body
         className={`${NeueHaasGroteskDisplay.variable} ${PPFraktionMono.variable}`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <main className="flex min-h-dvh flex-col">
+          <Header />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );

@@ -37,7 +37,6 @@
 }
 
 body {
-  min-height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
   background-color: var(--color-mono-0);
