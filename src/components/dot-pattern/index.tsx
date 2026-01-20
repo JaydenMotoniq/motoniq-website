@@ -20,6 +20,10 @@ export function DotPattern() {
     dotsRef.current = [];
     container.innerHTML = "";
 
+    // Calculate center of the screen for initial animation
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         const dot = document.createElement("div");
@@ -31,8 +35,44 @@ export function DotPattern() {
         dot.style.top = `${offset + row * spacing}px`;
         dot.style.transformStyle = "preserve-3d";
 
+        // Initial state: invisible and scaled down
+        dot.style.opacity = "0";
+        dot.style.transform = "translateZ(-100px) scale(0)";
+
         container.appendChild(dot);
         dotsRef.current.push(dot);
+
+        // Calculate distance from center for staggered animation
+        const dotX = offset + col * spacing;
+        const dotY = offset + row * spacing;
+        const dx = centerX - dotX;
+        const dy = centerY - dotY;
+        const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+        // Stagger animation based on distance from center (faster wave)
+        const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+        const delay = (distanceFromCenter / maxDistance) * 400; // 400ms max delay for faster wave
+
+        // Animate in with an aggressive ripple effect
+        setTimeout(() => {
+          dot.style.transition =
+            "opacity 300ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)";
+          dot.style.opacity = "1";
+          // Overshoot with scale(1.8) and translateZ for dramatic effect
+          dot.style.transform = "translateZ(60px) scale(1.4)";
+
+          // Settle back to normal state
+          setTimeout(() => {
+            dot.style.transition =
+              "transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+            dot.style.transform = "translateZ(0px) scale(1)";
+
+            // After settling, set transition for hover effects
+            setTimeout(() => {
+              dot.style.transition = "transform 300ms ease-out";
+            }, 400);
+          }, 300);
+        }, delay);
       }
     }
 
