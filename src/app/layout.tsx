@@ -1,13 +1,16 @@
-import "./globals.scss";
-import type { Metadata } from "next";
-import { ProtoMono, SFProDisplay } from "./fonts";
+import "./globals.css";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { type Metadata } from "next";
+
+import { NeueHaasGroteskDisplay, PPFraktionMono } from "./fonts";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { DotPattern } from "@/components/dot-pattern";
 
 export const metadata: Metadata = {
-  title: "Motoniq",
-  description: "Motion intelligent machines",
+  title: "Motoniq: The Data Engine for Physical AI",
+  description:
+    "The only full-stack data system built for robots to perform in the real world.",
 };
 
 export default function RootLayout({
@@ -17,10 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ProtoMono.className} ${SFProDisplay.className}`}>
-        <Header />
-        {children}
-        <Footer />
+      <body
+        className={`${NeueHaasGroteskDisplay.variable} ${PPFraktionMono.variable}`}
+      >
+        <DotPattern />
+        <main className="relative z-10 flex min-h-dvh flex-col">
+          <Header />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );
