@@ -42,7 +42,7 @@ export const Footer = () => {
             {/* Email */}
             <Link
               href="mailto:contact@motoniq.ai"
-              className="flex items-center gap-2 rounded-lg px-0 py-2"
+              className="group flex items-center gap-2 rounded-lg px-0 py-2"
             >
               <Image
                 src="/icons/email.svg"
@@ -51,7 +51,7 @@ export const Footer = () => {
                 height={14}
                 className="invert"
               />
-              <span className="text-mono-800 text-sm leading-4">
+              <span className="text-mono-800 text-sm leading-4 transition-all duration-200 group-hover:[text-shadow:_0.3px_0_0_currentColor,_-0.3px_0_0_currentColor]">
                 contact@motoniq.ai
               </span>
             </Link>
@@ -61,7 +61,7 @@ export const Footer = () => {
               href="https://x.com/motoniq"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg py-2 pr-4"
+              className="group flex items-center gap-2 rounded-lg py-2 pr-4"
             >
               <Image
                 src="/icons/x.svg"
@@ -70,7 +70,7 @@ export const Footer = () => {
                 height={14}
                 className="invert"
               />
-              <span className="text-mono-800 text-sm leading-4">
+              <span className="text-mono-800 text-sm leading-4 transition-all duration-200 group-hover:[text-shadow:_0.3px_0_0_currentColor,_-0.3px_0_0_currentColor]">
                 X (Twitter)
               </span>
               <Image
@@ -86,7 +86,7 @@ export const Footer = () => {
               href="https://linkedin.com/company/motoniq"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg py-2 pr-4"
+              className="group flex items-center gap-2 rounded-lg py-2 pr-4"
             >
               <Image
                 src="/icons/linkedin.svg"
@@ -95,7 +95,9 @@ export const Footer = () => {
                 height={14}
                 className="invert"
               />
-              <span className="text-mono-800 text-sm leading-4">Linkedin</span>
+              <span className="text-mono-800 text-sm leading-4 transition-all duration-200 group-hover:[text-shadow:_0.3px_0_0_currentColor,_-0.3px_0_0_currentColor]">
+                Linkedin
+              </span>
               <Image
                 src="/icons/arrow-external.svg"
                 alt=""
