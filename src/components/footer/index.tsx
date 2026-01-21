@@ -29,7 +29,7 @@ export const Footer = () => {
                 className="shrink-0"
               />
               <p className="text-mono-700 text-base leading-5">
-                The Data Engine for Physical Ai
+                The Data Engine for Physical AI
               </p>
             </div>
             <p className="text-mono-700 text-sm leading-4">
