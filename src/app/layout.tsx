@@ -21,7 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light" style={{ colorScheme: "only light" }}>
+      <head>
+        {/* Stronger "only light" hint. Next.js Viewport type doesn't
+            accept the "only light" value so we render it directly. */}
+        <meta name="color-scheme" content="only light" />
+        <meta name="supported-color-schemes" content="light" />
+      </head>
       <body className={`${SuisseIntl.variable} ${PPFraktionMono.variable}`}>
         {children}
       </body>

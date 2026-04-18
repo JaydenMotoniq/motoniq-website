@@ -1,15 +1,35 @@
 @import "tailwindcss";
 
 /* Force light mode — prevents Comet, Brave shields, iOS inverted colors,
-   and other auto-dark transforms from inverting our background and text. */
+   and other auto-dark transforms from inverting our background and text.
+   "only light" is a stronger signal than bare "light". forced-color-adjust
+   tells the browser not to apply color transforms. Explicit bg+color on
+   html/body locks the palette even if the browser ignores hints. */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
+  forced-color-adjust: none;
   background-color: #eff4f9;
+  color: #151515;
 }
 
 html,
 body {
-  background-color: #eff4f9;
+  color-scheme: only light;
+  forced-color-adjust: none;
+  background-color: #eff4f9 !important;
+  color: #151515;
+}
+
+/* Override any browser-level dark-media preference; we are always light. */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body {
+    color-scheme: only light;
+    forced-color-adjust: none;
+    background-color: #eff4f9 !important;
+    color: #151515 !important;
+  }
 }
 
 @theme inline {

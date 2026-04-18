@@ -2,22 +2,15 @@ export const Hero = () => {
   return (
     <section className="relative flex min-h-dvh w-full flex-col bg-mono-100">
       {/* Logo — absolutely positioned so it doesn't consume flex height.
-          Center sits at y=0, top half above viewport.
-          Revealed naturally during overscroll bounce.
-          Outer wrapper does a one-time reveal on mount, inner wrapper
-          floats continuously (subtle breathing). */}
+          Center sits at y=0, top half above viewport. Static (no animation). */}
       <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2">
-        <div className="animate-logo-reveal">
-          <div className="animate-logo-float">
-            <img
-              src="/logo.svg"
-              alt="Motoniq"
-              width={270}
-              height={256}
-              className="h-auto w-[180px] -translate-y-1/2 md:w-[270px]"
-            />
-          </div>
-        </div>
+        <img
+          src="/logo.svg"
+          alt="Motoniq"
+          width={270}
+          height={256}
+          className="h-auto w-[180px] -translate-y-1/2 md:w-[270px]"
+        />
       </div>
 
       {/* Hero content */}
