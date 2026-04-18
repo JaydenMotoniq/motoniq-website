@@ -21,7 +21,7 @@ export const Hero = () => {
       </div>
 
       {/* Hero content */}
-      <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-center gap-6 px-6 pt-8 pb-12 text-center md:px-12 md:pt-12 md:pb-16">
+      <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-start gap-6 px-6 pt-40 pb-12 text-center md:justify-center md:px-12 md:pt-12 md:pb-16">
         <span className="font-pp-fraktion-mono uppercase text-mono-500 text-d3">
           A Physical AI Research Foundation
         </span>
