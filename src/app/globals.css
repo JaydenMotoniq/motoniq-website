@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Force light mode — prevents Comet, Brave shields, iOS inverted colors,
+   and other auto-dark transforms from inverting our background and text. */
+:root {
+  color-scheme: light;
+  background-color: #eff4f9;
+}
+
+html,
+body {
+  background-color: #eff4f9;
+}
+
 @theme inline {
   --font-suisse-intl: var(--font-suisse-intl);
   --font-pp-fraktion-mono: var(--font-pp-fraktion-mono);

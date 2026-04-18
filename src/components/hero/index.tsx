@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section className="relative flex min-h-screen w-full flex-col bg-mono-100">
+    <section className="relative flex min-h-dvh w-full flex-col bg-mono-100">
       {/* Logo — absolutely positioned so it doesn't consume flex height.
           Center sits at y=0, top half above viewport.
           Revealed naturally during overscroll bounce.
