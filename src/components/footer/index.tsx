@@ -12,7 +12,7 @@ export const Footer = () => {
         className="bg-primary text-mono-800 font-pp-fraktion-mono hidden py-1.5 text-sm tracking-tight uppercase [--duration:20s] [--gap:2rem] md:flex"
       >
         <span>•</span>
-        <span>The Full-Stack Data Collection System</span>
+        <span>Built for physics, not pixels</span>
       </Marquee>
 
       <footer className="md:bg-mono-800 md:p-16 xl:px-50 xl:py-16 2xl:px-64 2xl:py-16">
@@ -29,7 +29,7 @@ export const Footer = () => {
                 className="shrink-0"
               />
               <p className="text-mono-700 text-base leading-5">
-                The Data Engine for Physical AI
+                Machine Intelligence. Rebuilt.
               </p>
             </div>
             <p className="text-mono-700 text-sm leading-4">

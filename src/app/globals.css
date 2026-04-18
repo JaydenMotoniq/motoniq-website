@@ -6,6 +6,8 @@
 
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-logo-float: logo-float 5s ease-in-out infinite;
+  --animate-logo-reveal: logo-reveal 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes marquee {
     from {
@@ -23,6 +25,29 @@
     to {
       transform: translateY(calc(-100% - var(--gap)));
     }
+  }
+}
+
+/* Keyframes hoisted to top level so they're always registered regardless of
+   @theme scoping. Animation tokens reference them by name. */
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes logo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

@@ -5,9 +5,9 @@ import { type Metadata } from "next";
 import { SuisseIntl, PPFraktionMono } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Motoniq: The Data Engine for Physical AI",
+  title: "Motoniq — Machine Intelligence. Built for Physics.",
   description:
-    "The only full-stack data system built for robots to perform in the real world.",
+    "A new class of machine intelligence for the physical world. One model across any robot, any task, any environment.",
 };
 
 export default function RootLayout({
