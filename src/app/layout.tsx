@@ -4,16 +4,15 @@ import { type Metadata, type Viewport } from "next";
 
 import { SuisseIntl, PPFraktionMono } from "./fonts";
 
+// Note: Favicon, OG image, and Twitter image are served via Next.js App
+// Router file conventions (src/app/favicon.ico, opengraph-image.png,
+// twitter-image.png, icon.png, apple-icon.png). Those take precedence over
+// manual metadata fields and are auto-injected into <head> at build time.
 export const metadata: Metadata = {
   metadataBase: new URL("https://motoniq.ai"),
   title: "Motoniq — Machine Intelligence. Built for Physics.",
   description:
     "A new class of machine intelligence for the physical world. One model across any robot, any task, any environment.",
-  icons: {
-    icon: "/Favicon.png",
-    shortcut: "/Favicon.png",
-    apple: "/Favicon.png",
-  },
   openGraph: {
     type: "website",
     url: "https://motoniq.ai",
@@ -21,14 +20,6 @@ export const metadata: Metadata = {
     title: "Motoniq — Machine Intelligence. Built for Physics.",
     description:
       "A new class of machine intelligence for the physical world. One model across any robot, any task, any environment.",
-    images: [
-      {
-        url: "/Opengraph.png",
-        width: 1200,
-        height: 630,
-        alt: "Motoniq — A new class of machine intelligence. Built for physics, not pixels.",
-      },
-    ],
     locale: "en_US",
   },
   twitter: {
@@ -36,7 +27,6 @@ export const metadata: Metadata = {
     title: "Motoniq — Machine Intelligence. Built for Physics.",
     description:
       "A new class of machine intelligence for the physical world. One model across any robot, any task, any environment.",
-    images: ["/Opengraph.png"],
   },
 };
 
