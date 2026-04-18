@@ -1,11 +1,12 @@
 export const Hero = () => {
   return (
     <section className="relative flex min-h-screen w-full flex-col bg-mono-100">
-      {/* Logo — center sits at y=0, top half above viewport.
+      {/* Logo — absolutely positioned so it doesn't consume flex height.
+          Center sits at y=0, top half above viewport.
           Revealed naturally during overscroll bounce.
           Outer wrapper does a one-time reveal on mount, inner wrapper
           floats continuously (subtle breathing). */}
-      <div className="flex justify-center">
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2">
         <div className="animate-logo-reveal">
           <div className="animate-logo-float">
             <img
