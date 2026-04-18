@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/Users/samvraiii/Library/Fonts/PPFraktionMono-Regular-BF675904a6a1564.otf\" /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/regular.otf)",
+      "Bash(cp \"/Users/samvraiii/Library/Fonts/PPFraktionMono-RegularItalic-BF675904a6859b6.otf\" /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/regular-italic.otf)",
+      "Bash(cp \"/Users/samvraiii/Library/Fonts/PPFraktionMono-Bold-BF675904a6c4c6e.otf\" /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/bold.otf)",
+      "Bash(cp \"/Users/samvraiii/Library/Fonts/PPFraktionMono-BoldItalic-BF675904a6f3fc1.ttf\" /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/bold-italic.ttf)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm install:*)",
+      "Bash(cp /Users/samvraiii/motoniq-landing/public/logo.svg /Users/samvraiii/motoniq-landing/.claude/worktrees/brave-tesla/public/logo.svg)",
+      "Bash(cp -r /Users/samvraiii/motoniq-landing/public/fonts/SuisseIntl /Users/samvraiii/motoniq-landing/.claude/worktrees/brave-tesla/public/fonts/)",
+      "Bash(cp /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/regular-italic.otf /Users/samvraiii/motoniq-landing/.claude/worktrees/brave-tesla/public/fonts/PPFraktionMono/)",
+      "Bash(cp /Users/samvraiii/motoniq-landing/public/fonts/PPFraktionMono/bold-italic.ttf /Users/samvraiii/motoniq-landing/.claude/worktrees/brave-tesla/public/fonts/PPFraktionMono/)",
+      "Bash(git -C /Users/samvraiii/motoniq-landing/.claude/worktrees/brave-tesla status)"
+    ]
+  }
+}

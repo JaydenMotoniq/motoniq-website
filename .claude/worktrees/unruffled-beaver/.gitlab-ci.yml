@@ -1,0 +1,88 @@
+stages:
+  - container_build
+  - deploy
+
+variables:
+  IMAGE_NAME: "ewr.vultrcr.com/xyber/motoniq-landing"
+  GIT_SUBMODULE_STRATEGY: "recursive"
+  DOCKER_BUILDKIT: "1"
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
+  VULTR_REGISTRY: "ewr.vultrcr.com"
+
+build:
+  stage: container_build
+  image: docker:25.0.3
+  tags:
+    - k8s-runners
+  services:
+    - name: docker:25.0.3-dind
+      command: ["--tls=false","--host=tcp://0.0.0.0:2375","--storage-driver=overlay2"]
+  before_script:
+    - docker info || true
+    - docker login "$VULTR_REGISTRY" -u "$VULTR_REGISTRY_USERNAME" -p "$VULTR_REGISTRY_PASSWORD"
+    - export GIT_COMMIT_HASH="$(git rev-parse --short HEAD)"
+    - echo "$GIT_COMMIT_HASH"
+  script:
+    - FULL_IMAGE="$IMAGE_NAME:$IMAGE_TAG"
+    - echo "Building $FULL_IMAGE"
+    - DOCKER_BUILDKIT=1 docker build --build-arg UV_INDEX_GITLAB_PASSWORD="$PIP_GITLAB_PASSWORD" --network=host -t "$FULL_IMAGE" .
+    - docker push "$FULL_IMAGE"
+    - docker rmi "$FULL_IMAGE" || true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: always
+      variables:
+        STAGE: "dev"
+        IMAGE_TAG: "$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA.dev"
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+      variables:
+        STAGE: "prod"
+        IMAGE_TAG: "$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+
+deploy:
+  stage: deploy
+  image: ubuntu
+  needs:
+    - build
+  tags:
+    - k8s-runners
+  before_script:
+    - which ssh-agent || (apt-get update -y && apt-get install -y openssh-client git wget)
+    - wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+    - chmod +x /usr/bin/yq
+    - mkdir -p /root/.ssh
+    - echo "$SSH_PRIVATE_KEY" >/root/.ssh/id_rsa
+    - chmod 600 /root/.ssh/id_rsa
+    - ssh-keyscan -H gitlab-gitlab-shell.infra.svc.cluster.local >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - eval "$(ssh-agent -s)"
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - git config --global user.email "xydeploy@xyber.inc"
+    - git config --global user.name "xydeploy"
+    - git clone "$K8S_REPO"
+    - cd "$CHART_PATH"
+    - ls -la
+  script:
+    - FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+    - echo "Updating image to $FULL_IMAGE"
+    - yq e ".image = \"${FULL_IMAGE}\"" -i "$VALUES_FILE"
+    - git add "$VALUES_FILE"
+    - git commit -am "Update image to $FULL_IMAGE" || echo "Nothing to commit"
+    - git push
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: always
+      variables:
+        K8S_REPO: "ssh://git@gitlab-gitlab-shell.infra.svc.cluster.local:22/infra/k8s-dev.git"
+        CHART_PATH: "k8s-dev/xyber/motoniq-landing"
+        IMAGE_TAG: "$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA.dev"
+        VALUES_FILE: "values.yaml"
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+      variables:
+        K8S_REPO: "ssh://git@gitlab-gitlab-shell.infra.svc.cluster.local:22/infra/k8s-prod.git"
+        CHART_PATH: "k8s-prod/xyber/motoniq-landing"
+        IMAGE_TAG: "$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+        VALUES_FILE: "values.yaml"

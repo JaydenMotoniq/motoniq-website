@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-neue-haas-grotesk-display: var(--font-neue-haas-grotesk-display);
+  --font-suisse-intl: var(--font-suisse-intl);
   --font-pp-fraktion-mono: var(--font-pp-fraktion-mono);
 
   --animate-marquee: marquee var(--duration) infinite linear;
@@ -28,25 +28,106 @@
 
 
 @theme {
-  --color-primary: #d5f959;
-  --color-mono-0: #fff;
-  --color-mono-400: #ceced4;
-  --color-mono-450: #96969B;
-  --color-mono-600: #393739;
-  --color-mono-700: #171315;
-  --color-mono-800: #000;
+  /* Mono */
+  --color-mono-100: #eff4f9;
+  --color-mono-200: #dfe9ed;
+  --color-mono-300: #c3c7cc;
+  --color-mono-400: #989b9d;
+  --color-mono-500: #6c6e70;
+  --color-mono-600: #424242;
+  --color-mono-700: #151515;
+
+  /* Typography – Headings */
+  --text-h1: 48px;
+  --text-h1--line-height: 60px;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h1--font-weight: 600;
+
+  --text-h2: 40px;
+  --text-h2--line-height: 48px;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 32px;
+  --text-h3--line-height: 40px;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 600;
+
+  --text-h4: 24px;
+  --text-h4--line-height: 32px;
+  --text-h4--letter-spacing: -0.01em;
+  --text-h4--font-weight: 600;
+
+  --text-h5: 18px;
+  --text-h5--line-height: 26px;
+  --text-h5--letter-spacing: -0.01em;
+  --text-h5--font-weight: 600;
+
+  /* Typography – Body */
+  --text-b1: 18px;
+  --text-b1--line-height: 26px;
+  --text-b1--letter-spacing: -0.01em;
+  --text-b1--font-weight: 400;
+
+  --text-b2: 16px;
+  --text-b2--line-height: 24px;
+  --text-b2--letter-spacing: -0.01em;
+  --text-b2--font-weight: 400;
+
+  /* Typography – Decorative (PP Fraktion Mono) */
+  --text-d1: 18px;
+  --text-d1--line-height: 24px;
+  --text-d1--letter-spacing: -0.01em;
+  --text-d1--font-weight: 400;
+
+  --text-d2: 16px;
+  --text-d2--line-height: 24px;
+  --text-d2--letter-spacing: -0.01em;
+  --text-d2--font-weight: 400;
+
+  --text-d3: 14px;
+  --text-d3--line-height: 20px;
+  --text-d3--letter-spacing: -0.01em;
+  --text-d3--font-weight: 400;
+
+  /* Typography – Captions */
+  --text-c1: 14px;
+  --text-c1--line-height: 22px;
+  --text-c1--letter-spacing: -0.01em;
+  --text-c1--font-weight: 400;
+
+  /* Spacing scale (4px base unit — reset defaults, only approved values) */
+  --spacing-*: initial;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+  --spacing-64: 256px;
+
+  /* Accent */
+  --color-yellow-100: #c3fd10;
+  --color-blue-100: #3524f6;
+  --color-red-100: #f21627;
 }
 
 body {
-  overflow-x: hidden;
   scroll-behavior: smooth;
-  background-color: var(--color-mono-0);
+  background-color: var(--color-mono-100);
 }
 
 body {
-  font-family: var(--font-neue-haas-grotesk-display);
-  font-weight: 500;
-  color: var(--color-mono-800);
+  font-family: var(--font-suisse-intl);
+  font-weight: 400;
+  color: var(--color-mono-700);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
