@@ -22,9 +22,7 @@ export const Hero = () => {
         </h1>
 
         <p className="max-w-[640px] text-mono-600 text-b1">
-          One model. Any robot. Any task. Any environment.
-          <br />
-          No army of engineers.
+          <strong>One system</strong> that generalises across robots, tasks, and the real world.
         </p>
       </div>
 
