@@ -15,10 +15,6 @@ export const Hero = () => {
 
       {/* Hero content */}
       <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-start gap-5 px-6 pt-32 pb-12 text-center md:justify-center md:gap-6 md:px-12 md:pt-12 md:pb-16">
-        <span className="font-pp-fraktion-mono uppercase text-mono-500 text-d3">
-          A Physical AI Research Foundation
-        </span>
-
         <h1 className="text-mono-700 text-h3 md:text-h1">
           A new class of machine intelligence.
           <br />
