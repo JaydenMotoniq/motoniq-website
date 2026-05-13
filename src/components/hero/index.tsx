@@ -15,14 +15,14 @@ export const Hero = () => {
 
       {/* Hero content */}
       <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-start gap-5 px-6 pt-32 pb-12 text-center md:justify-center md:gap-6 md:px-12 md:pt-12 md:pb-16">
-        <h1 className="text-mono-700 text-h3 md:text-h1">
-          A new class of machine intelligence.
+        <h1 className="text-mono-700 text-h3 md:text-h2">
+          A new class of embodied intelligence.
           <br />
           Built for physics, not pixels.
         </h1>
 
         <p className="max-w-[640px] text-mono-600 text-b1">
-          <strong>One system</strong> that generalises across robots, tasks, and the real world.
+          One model that generalizes across robots, tasks, and the real world.
         </p>
       </div>
 
