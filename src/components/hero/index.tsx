@@ -21,9 +21,6 @@ export const Hero = () => {
           Built for physics, not pixels.
         </h1>
 
-        <p className="max-w-[640px] text-mono-600 text-b1">
-          One model that generalizes across robots, tasks, and the real world.
-        </p>
       </div>
 
       {/* Minimal contact bar — bordered chip boxes */}
